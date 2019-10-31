@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/Aelia13/alexa-skill.git"
+    "url": "git+ssh://git@github.com/fredleger/alexa-skill.git"
   },
-  "author": "Sandy Giustino",
+  "author": "Frederic Leger",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Aelia13/alexa-skill/issues"
+    "url": "https://github.com/fredleger/alexa-skill/issues"
   },
-  "homepage": "https://github.com/Aelia13/alexa-skill#readme",
+  "homepage": "https://github.com/fredleger/alexa-skill#readme",
   "dependencies": {
     "ask-sdk-core": "^2.7.0",
     "ask-sdk-model": "^1.22.0",

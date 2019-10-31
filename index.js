@@ -8,21 +8,41 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Bonjour, vous pouvez me demander si c\'est une bonne situation scribe'; // change with your sentence
+        const speakOutput = 'Bonjour, vous pouvez me demander si c\'est bientôt le week-end'; // change with your sentence
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
             .getResponse();
     }
 };
-const AsterixIntentHandler = { //changer with your name intent
+const BientotWEIntentHandler = { //changer with your name intent
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AsterixIntent'; // change with your name intent
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'BientotWEIntent'; // change with your name intent
     },
     handle(handlerInput) {
-        const speakOutput = `Vous savez, moi je ne crois pas qu’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd’hui avec vous, je dirais que c’est d’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée... Parce que quand on a le goût de la chose, quand on a le goût de la chose bien faite, le beau geste, parfois on ne trouve pas l’interlocuteur en face je dirais, le miroir qui vous aide à avancer.
-			Alors ça n’est pas mon cas, comme je disais là, puisque moi au contraire, j’ai pu : et je dis merci à la vie, je lui dis merci, je chante la vie, je danse la vie… je ne suis qu’amour ! Et finalement, quand beaucoup de gens aujourd’hui me disent « Mais comment fais-tu pour avoir cette humanité ? », et bien je leur réponds très simplement, je leur dis que c’est ce goût de l’amour ce goût donc qui m’a poussé aujourd’hui à entreprendre une construction mécanique, mais demain qui sait ? Peut-être simplement à me mettre au service de la communauté, à faire le don, le don de soi… `; // changer with your answer
+        var date = new Date();
+        var currentDay = date.getDay()
+        var speakOutput;
+
+        switch (true) {
+            case (currentDay == 3):
+                speakOutput = `Ca s'approche assez rapidement !`;
+                break;
+            case (currentDay == 4):
+                speakOutput = `Humm ... demain soir non ?`;
+                break;
+            case (currentDay == 5):
+                speakOutput = `Oui, très bientôt !`;
+                break;
+            case (currentDay >= 6):
+                speakOutput = `Heu ... il a déjà commencé en fait !`;
+                break;
+            default:
+                speakOutput = `Désolée, mais non ...`;
+                break;
+        }
+
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .getResponse();
@@ -34,7 +54,7 @@ const HelpIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Vous pouvez me demander la réplique d\'Otis le scribe dans Astérix Mission Cléopâtre en disant "Alexa, c\'est une bonne situation ça Scribe ?" ou encore "Alexa, quelle est la réplique du Scribe ?" Comment puis-je vous aider ?'; // change with your help sentence
+        const speakOutput = 'Vous pouvez me demander si c\'est bientôt le week end.'; // change with your help sentence
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -49,7 +69,7 @@ const CancelAndStopIntentHandler = {
                 || Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speakOutput = 'Viens me le dire de profil si t\'es un homme.'; // change with your stop sentence
+        const speakOutput = 'OK. Si vous avez besoin de moi je suis là.'; // change with your stop sentence
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .getResponse();
@@ -108,7 +128,7 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        AsterixIntentHandler, // change with your name intent
+        BientotWEIntentHandler, // change with your name intent
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
