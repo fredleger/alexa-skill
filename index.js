@@ -26,13 +26,13 @@ const BientotWEIntentHandler = { //changer with your name intent
         var speakOutput;
 
         switch (true) {
-            case (currentDay == 3):
+            case (currentDay === 3):
                 speakOutput = `Ca s'approche assez rapidement !`;
                 break;
-            case (currentDay == 4):
+            case (currentDay === 4):
                 speakOutput = `Humm ... demain soir non ?`;
                 break;
-            case (currentDay == 5):
+            case (currentDay === 5):
                 speakOutput = `Oui, très bientôt !`;
                 break;
             case (currentDay >= 6):
